@@ -14,7 +14,6 @@ function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId) {
         //Get sentiment data then post to Firebase
         SentimentService.post(params).then(function(data) {
             var sentiment = data.data;
-            console.log(message);
             var message = {
                 sentiment: sentiment.results,
                 name: vm.user,
