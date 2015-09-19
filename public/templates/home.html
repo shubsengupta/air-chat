@@ -50,9 +50,9 @@
     <div class="videoWrapper hidden-xs">
       <iframe width="640" height="360" src="https://www.youtube.com/embed/kWu9rqA0SVk" frameborder="0" allowfullscreen></iframe>
     </div>
-    <div class="comment-box col-xs-12">
+    <div class="col-xs-12 no-padding">
       <form ng-submit="home.postComment()">
-        <input placeholder="Comment here..." ng-model='home.comment'></input>
+        <input placeholder="Comment here..." ng-model='home.comment' class="comment-box"></input>
         <input id="submit-btn" type="submit" class="btn btn-default pull-right" value="Submit Comment"></input>
       </form>
     </div>
