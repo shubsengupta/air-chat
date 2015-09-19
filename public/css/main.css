@@ -81,3 +81,11 @@ li.comment strong.label {
 	margin-right: -6px;
 	padding-top: 4px;
 }
+
+ul#example-messages {
+    height: 50vh;
+    overflow: auto;
+}
+
+
+
