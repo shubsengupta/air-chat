@@ -29,21 +29,21 @@
     </div> -->
 
     <div class="example-chat l-demo-container">
-      <header>Firebase Chat Demo</header>
+      <header>Chat</header>
 
       <div class='example-chat-toolbar'>
         <label for="nameInput">Username:</label>
-        <input type='text' id='nameInput' placeholder='enter a username...'>
+        <input ng-model='home.username' type='text' id='nameInput' placeholder='enter a username...'>
       </div>
 
-      <ul id='example-messages' class="comment-area"></ul>
+      <ul id='example-messages' class="comment-area">
 
-      <footer>
-        <input type='text' id='messageInput'  placeholder='Type a message...'>
-      </footer>
+        <li ng-repeat="message in home.messages" class='comment'>
+          <strong class='label label-default'>{{message.name}}</strong>
+          {{message.text}}
+        </li>
+      </ul>
     </div>
-    <p>{{home.comment}}</p>
-    <p>{{home.postSentiment}}</p>
 
   </div>
   <div class="col-xs-11 col-sm-8">
@@ -52,7 +52,7 @@
     </div>
     <div class="comment-box col-xs-12">
       <form ng-submit="home.postComment()">
-        <textarea placeholder="Comment here..." ng-model='home.comment'></textarea>
+        <input placeholder="Comment here..." ng-model='home.comment'></input>
         <input id="submit-btn" type="submit" class="btn btn-default pull-right" value="Submit Comment"></input>
       </form>
     </div>

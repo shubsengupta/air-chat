@@ -2,17 +2,34 @@ angular
 	.module('app')
 	.controller('homeCtrl', homeCtrl);
 
-homeCtrl.$inject = ['SentimentService'];
-function homeCtrl(SentimentService){
+homeCtrl.$inject = ['SentimentService', '$firebaseArray'];
+function homeCtrl(SentimentService, $firebaseArray){
 	var vm = this;
 	vm.test = "test";
 	vm.postComment = function (){
 		var params = { data : vm.comment};
+    
+    //Get sentiment data then post to Firebase
 		SentimentService.post(params).then(function (data){
-			vm.postSentiment = data.data;
+			var sentiment = data.data;
+      var message = {
+        sentiment : sentiment.results,
+        name : vm.username,
+        text : vm.comment
+      };
+      console.log(message);
+      vm.messages.$add(message).then(function(ref){
+        //TODO Handle finished message
+        console.log('Message added successfully');
+        vm.comment ='';
+      });
+
 		})
 	}
-    vm.init = initFirebase;
+    vm.init = function(){
+      var ref = new Firebase('https://htn-chat.firebaseio.com/');
+      vm.messages = $firebaseArray(ref.limitToLast(25));
+    }
 
 }
 
