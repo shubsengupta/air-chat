@@ -8,56 +8,32 @@
   <div id="vertical-sentiment-bar" class="col-xs-1 pull-left"></div>
   
   <div class="col-xs-11 col-sm-3 pull-right">
-<!--     <div class="comment-area">
-      <div class="comment">
-        <span class="label label-success">Shub Sengupta</span>
-        This is a good comment! This is a good comment! This is a good comment! This is a good comment! This is a good comment! This is a good comment! 
-      </div>
-       <div class="comment">
-        <span class="label label-danger">Shub Sengupta</span>
-        This is a bad comment!
-      </div>
-      <div class="comment">
-        <span class="label label-warning">Shub Sengupta</span>
-        This is an okay comment! This is an okay comment! This is an okay comment!
-      </div>
-      <div class="comment">
-        <span class="label label-default">Shub Sengupta</span>
-        This is a netural comment!
-      </div>
-     
-    </div> -->
-
     <div class="example-chat l-demo-container">
-      <header>Firebase Chat Demo</header>
+      <ul id='example-messages' class="comment-area">
 
-      <div class='example-chat-toolbar'>
-        <label for="nameInput">Username:</label>
-        <input type='text' id='nameInput' placeholder='enter a username...'>
-      </div>
-
-      <ul id='example-messages' class="comment-area"></ul>
-
-      <footer>
-        <input type='text' id='messageInput'  placeholder='Type a message...'>
-      </footer>
+        <li ng-repeat="message in home.messages" class='comment' anchor-bottom>
+          <strong class='label' ng-class='home.calculateSentimentClass(message.sentiment)'>{{message.name}}</strong>
+          {{message.text}}
+        </li>
+      </ul>
     </div>
-    <p>{{home.comment}}</p>
-    <p>{{home.postSentiment}}</p>
 
   </div>
   <div class="col-xs-11 col-sm-8">
     <div class="videoWrapper hidden-xs">
       <iframe width="640" height="360" src="https://www.youtube.com/embed/kWu9rqA0SVk" frameborder="0" allowfullscreen></iframe>
     </div>
-    <div class="comment-box col-xs-12">
+    <div class="col-xs-12 no-padding">
       <form ng-submit="home.postComment()">
-        <textarea placeholder="Comment here..." ng-model='home.comment'></textarea>
+        <input placeholder="Comment here..." ng-model='home.comment' class="comment-box"></input>
         <input id="submit-btn" type="submit" class="btn btn-default pull-right" value="Submit Comment"></input>
       </form>
     </div>
   </div>
-  <!-- Post Comment Template-->
+  <div class="col-xs-12">
+    <button ng-show='!home.isLoggedIn' ng-click='home.loginFacebook()'>Login with Facebook</button>
+    <button ng-show='home.isLoggedIn' ng-click="home.logout()">Logout</button>
+  </div>
   
 
 </div>
