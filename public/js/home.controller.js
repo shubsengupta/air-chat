@@ -32,6 +32,19 @@ function homeCtrl(SentimentService, $firebaseArray) {
     vm.init = function() {
         var ref = new Firebase('https://htn-chat.firebaseio.com/');
         vm.messages = $firebaseArray(ref.limitToLast(25));
+        if (navigator.geolocation) {
+            var timeoutVal = 10 * 1000 * 1000;
+            navigator.geolocation.getCurrentPosition(
+                displayPosition,
+                displayError, {
+                    enableHighAccuracy: true,
+                    timeout: timeoutVal,
+                    maximumAge: 0
+                }
+            );
+        } else {
+            alert("Geolocation is not supported by this browser");
+        }
     }
 
     /**
@@ -53,7 +66,7 @@ function homeCtrl(SentimentService, $firebaseArray) {
             }
             return classId;
         }
-        return "label-default"; 
+        return "label-default";
     }
 
 }
@@ -85,4 +98,19 @@ function setSentimentValue(value) {
     barAfterStyle.innerHTML = "#vertical-sentiment-bar:after{content: '';display: block;position: absolute;left: 4px;bottom: 4px;width: 75%;border-radius: 3px; height: " + value * 100 + "%; background: " + color + ";";
 
     document.head.appendChild(barAfterStyle);
+
+}
+
+
+function displayPosition(position) {
+    console.log("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+}
+
+function displayError(error) {
+    var errors = {
+        1: 'Permission denied',
+        2: 'Position unavailable',
+        3: 'Request timeout'
+    };
+    alert("Error: " + errors[error.code]);
 }
