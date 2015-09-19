@@ -99,12 +99,7 @@ ul#example-messages {
     cursor:pointer;
     opacity:0.5;
 }
-#form1 {
-    display: inline-flex;
-    height: 100%;
-    
-}
 
 #createLink {
-    margin: auto 5px;
+    margin: 20vh 5px;
 }
