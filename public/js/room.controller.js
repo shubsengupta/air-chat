@@ -59,6 +59,8 @@ function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId) {
         if (authData) {
             vm.user = authData.google.cachedUserProfile.given_name;
         }
+
+        //Polls until Youtube API is loaded
         var youtubeAPI = setInterval(function(){
             if(apiReady){
                 setYTStream(roomId);
@@ -66,6 +68,25 @@ function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId) {
                 clearInterval(youtubeAPI);
             }
         },1000);
+
+        //Listens to new chat post
+        vm.ref.on("child_added", function(data) {
+            var message = data.val();
+            if (vm.count && vm.sentiment) {
+                vm.count++;
+                vm.sentiment += message.sentiment;
+                if (vm.count == 5) {
+                    var averageSentiment = vm.sentiment / 5;
+                    setSentimentValue(averageSentiment);
+
+                    vm.count = 0;
+                    vm.sentiment = 0;
+                }
+            } else {
+                vm.count = 1;
+                vm.sentiment = message.sentiment;
+            }
+        });
 
     }
     vm.checkAuthenticatedUser = function(authData){
