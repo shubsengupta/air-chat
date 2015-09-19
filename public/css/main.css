@@ -1,6 +1,6 @@
 body {
-    padding-top: 70px;
-    padding-bottom: 30px;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 .video-title {
@@ -9,7 +9,8 @@ body {
     -ms-text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
-    line-height: 42px;
+    line-height: 32px;
+    font-size: 28px;
 }
 
 .comment {
@@ -30,9 +31,10 @@ li.comment strong.label {
 .comment-box {
     width: 100%;
     resize: vertical;
-    height: 60px;
+    height: 55px;
     border: 1px solid #ccc;
     margin: 10px 0;
+    padding-left: 10px;
 }
 
 .comment-area {
@@ -64,10 +66,10 @@ li.comment strong.label {
 
 #vertical-sentiment-bar {
     display: inline-block;
-    width: 20px;
-    height: 65vh;
-    border: solid 3px #5cb85c;
-    border-radius: 10px;
+    width: 35px;
+    height: 66vh;
+    border: solid 2px #5cb85c;
+    border-radius: 5px;
     position: relative;
     margin-right: -6px;
     padding-top: 4px;
@@ -96,4 +98,13 @@ ul#example-messages {
 .sentiment-block:hover{
     cursor:pointer;
     opacity:0.5;
+}
+#form1 {
+    display: inline-flex;
+    height: 100%;
+    
+}
+
+#createLink {
+    margin: auto 5px;
 }
