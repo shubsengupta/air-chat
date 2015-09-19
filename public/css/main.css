@@ -55,6 +55,6 @@ body {
 	font-weight: 700;
 }
 
-.comment-box button {
+#submit-btn {
 	margin-top: 10px;
 }
