@@ -6,7 +6,6 @@ homeCtrl.$inject = ['SentimentService', '$firebaseArray', '$firebaseAuth'];
 
 function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
     var vm = this;
-    vm.test = "test";
     vm.postComment = function() {
         var params = {
             data: vm.comment
@@ -15,7 +14,6 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
         //Get sentiment data then post to Firebase
         SentimentService.post(params).then(function(data) {
             var sentiment = data.data;
-            console.log(message);
             var message = {
                 sentiment: sentiment.results,
                 name: vm.user,
@@ -26,10 +24,6 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
                 //TODO Handle finished message
                 console.log('Message added successfully');
                 vm.comment = '';
-
-
-
-
             });
 
         })
@@ -146,6 +140,40 @@ function setSentimentValue(value) {
 
     document.head.appendChild(barAfterStyle);
 
+}
+
+
+/**
+ * Adds a sentiment block to the sentiment container.
+ * Format for startTime: 'hh:mm:ss'
+ * Duration is inputed in terms of milliseconds.
+ * type: 1 for red, 2 for yellow, 3 for green
+ * @param {String} startTime
+ * @param {Number} duration
+ * @return {Number} type
+ */
+function addBlock(startTime, duration, type) {
+    var color;
+    switch (type) {
+        case 1: color = '#d9534f';//red
+            break;
+        case 2: color = '#f0ad4e';//yellow
+            break;
+        case 3: color = '#5cb85c';//green
+            break;
+    }
+
+    var sentimentContainer = document.getElementById('sentiment-container');
+
+    var block = document.createElement('div');
+    block.className = 'sentiment-block';
+    block.style.flexGrow = duration;
+    block.style.background = color;
+    //block.setAttribute('data-toggle', 'tooltip');
+    block.setAttribute('title', 'Start time: ' + startTime);
+    //block.setAttribute('onclick','playVidFrom('+'"' + startTime + '");')
+
+    sentimentContainer.appendChild(block);
 }
 
 function displayLocation(latitude,longitude){

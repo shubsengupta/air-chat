@@ -22,7 +22,20 @@ function routesConfig($stateProvider, $urlRouterProvider) {
         controllerAs : "landing"
     };
 
+    var room = {
+        url : "/room/:id",
+        templateUrl : "templates/room.html",
+        controller : "roomCtrl",
+        controllerAs : "room",
+        resolve : {
+            roomId : ['$stateParams', function ($stateParams){
+                return $stateParams.id;
+            }]
+        }
+    };
+
     $stateProvider.state('home', home)
-                  .state('landing', landing);
+                  .state('landing', landing)
+                  .state('room', room);
 
 }
