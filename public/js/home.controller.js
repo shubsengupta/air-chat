@@ -18,7 +18,7 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
             console.log(message);
             var message = {
                 sentiment: sentiment.results,
-                name: "@" + vm.user,
+                name: vm.user,
                 text: vm.comment
             };
             console.log(message);
@@ -37,8 +37,8 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
 
     vm.loginFacebook = function() {
         var auth = $firebaseAuth(vm.ref);
-        auth.$authWithOAuthPopup("twitter").then(function(authData) {
-            vm.user = authData.twitter.username;
+        auth.$authWithOAuthPopup("google").then(function(authData) {
+            vm.user = authData.google.cachedUserProfile.given_name;
         }).catch(function(error) {
             console.log("Authentication failed:", error);
         });
@@ -71,7 +71,7 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
 
         var authData = vm.ref.getAuth();
         if (authData) {
-            vm.user = authData.twitter.username;
+            vm.user = authData.google.cachedUserProfile.given_name;
         }
 
     }
