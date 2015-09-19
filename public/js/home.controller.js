@@ -240,4 +240,4 @@ function displayLocation(latitude,longitude){
     maximumAge: 0
   };
 
-  navigator.geolocation.getCurrentPosition(successCallback,errorCallback,options);
+  navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
