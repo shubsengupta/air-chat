@@ -15,6 +15,14 @@ function routesConfig($stateProvider, $urlRouterProvider) {
         controllerAs : 'home'
     };
 
-    $stateProvider.state('home', home);
+    var landing = {
+        url:"/landing",
+        templateUrl:"templates/landing.html",
+        controller : "landingCtrl",
+        controllerAs : "landing"
+    };
+
+    $stateProvider.state('home', home)
+                  .state('landing', landing);
 
 }
