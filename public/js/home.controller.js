@@ -1,34 +1,59 @@
 angular
-	.module('app')
-	.controller('homeCtrl', homeCtrl);
+    .module('app')
+    .controller('homeCtrl', homeCtrl);
 
 homeCtrl.$inject = ['SentimentService', '$firebaseArray'];
-function homeCtrl(SentimentService, $firebaseArray){
-	var vm = this;
-	vm.test = "test";
-	vm.postComment = function (){
-		var params = { data : vm.comment};
-    
-    //Get sentiment data then post to Firebase
-		SentimentService.post(params).then(function (data){
-			var sentiment = data.data;
-      var message = {
-        sentiment : sentiment.results,
-        name : vm.username,
-        text : vm.comment
-      };
-      console.log(message);
-      vm.messages.$add(message).then(function(ref){
-        //TODO Handle finished message
-        console.log('Message added successfully');
-        vm.comment ='';
-      });
 
-		})
-	}
-    vm.init = function(){
-      var ref = new Firebase('https://htn-chat.firebaseio.com/');
-      vm.messages = $firebaseArray(ref.limitToLast(25));
+function homeCtrl(SentimentService, $firebaseArray) {
+    var vm = this;
+    vm.test = "test";
+    vm.postComment = function() {
+        var params = {
+            data: vm.comment
+        };
+
+        //Get sentiment data then post to Firebase
+        SentimentService.post(params).then(function(data) {
+            var sentiment = data.data;
+            var message = {
+                sentiment: sentiment.results,
+                name: vm.username,
+                text: vm.comment
+            };
+            console.log(message);
+            vm.messages.$add(message).then(function(ref) {
+                //TODO Handle finished message
+                console.log('Message added successfully');
+                vm.comment = '';
+            });
+
+        })
+    }
+    vm.init = function() {
+        var ref = new Firebase('https://htn-chat.firebaseio.com/');
+        vm.messages = $firebaseArray(ref.limitToLast(25));
+    }
+
+    /**
+     * Calculates Sentiment Value and divides them into classes
+     * @param  {number} value decimal representation of sentiment value
+     * @return {string}       Class corresponding with the color
+     */
+    vm.calculateSentimentClass = function(value) {
+        var classId = "";
+        if (value) {
+            if (value < .25) {
+                classId = "label-danger";
+            } else if (value < .50) {
+                classId = "label-warning";
+            } else if (value < .75) {
+                classId = "label-default";
+            } else {
+                classId = "label-success";
+            }
+            return classId;
+        }
+        return "label-default"; 
     }
 
 }
@@ -38,11 +63,11 @@ function setSentimentValue(value) {
     //set color depending on how high the value is
     var color;
     if (value < 0.33) {
-        color = '#d9534f';//red
+        color = '#d9534f'; //red
     } else if (value < 0.66) {
-        color = '#f0ad4e';//yellow
+        color = '#f0ad4e'; //yellow
     } else {
-        color = '#5cb85c';//green
+        color = '#5cb85c'; //green
     }
 
     //set the border color of the sentiment bar
@@ -58,6 +83,6 @@ function setSentimentValue(value) {
     var barAfterStyle = document.createElement("style");
     barAfterStyle.setAttribute('id', 'barAfterStyle');
     barAfterStyle.innerHTML = "#vertical-sentiment-bar:after{content: '';display: block;position: absolute;left: 4px;bottom: 4px;width: 75%;border-radius: 3px; height: " + value * 100 + "%; background: " + color + ";";
-    
+
     document.head.appendChild(barAfterStyle);
 }
