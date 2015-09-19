@@ -18,7 +18,7 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
             console.log(message);
             var message = {
                 sentiment: sentiment.results,
-                name: vm.user,
+                name: "@" + vm.user,
                 text: vm.comment
             };
             console.log(message);
@@ -37,8 +37,8 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
 
     vm.loginFacebook = function() {
         var auth = $firebaseAuth(vm.ref);
-        auth.$authWithOAuthPopup("facebook").then(function(authData) {
-            vm.user = authData.facebook.cachedUserProfile.first_name;
+        auth.$authWithOAuthPopup("twitter").then(function(authData) {
+            vm.user = authData.twitter.username;
         }).catch(function(error) {
             console.log("Authentication failed:", error);
         });
@@ -50,7 +50,7 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
 
     vm.init = function() {
         
-        vm.ref = new Firebase('https://htn-chat.firebaseio.com/');
+        vm.ref = new Firebase('https://htn-chat.firebaseio.com/testing');
 
         vm.ref.onAuth(vm.checkAuthenticatedUser);
 
@@ -68,13 +68,11 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
         } else {
             alert("Geolocation is not supported by this browser");
         }
-        vm.messages.$loaded().then(function(isLoaded) {
-            console.log("loaded")
-            var messageList = $('#example-messages')[0];
-            messageList.scrollTop = messageList.scrollHeight;
-        }).catch(function(err) {
-            console.log("Error", err);
-        })
+
+        var authData = vm.ref.getAuth();
+        if (authData) {
+            vm.user = authData.twitter.username;
+        }
 
     }
     vm.checkAuthenticatedUser = function(authData){
@@ -110,6 +108,14 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
 
 }
 
+//Successful Callback for Geotag
+function displayPosition(position){
+    console.log(position);
+}
+//Error Callback for Geotag
+function displayError(err) {
+    console.log(err);
+}
 
 
 function setSentimentValue(value) {
