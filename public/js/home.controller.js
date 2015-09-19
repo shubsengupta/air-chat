@@ -2,9 +2,9 @@ angular
     .module('app')
     .controller('homeCtrl', homeCtrl);
 
-homeCtrl.$inject = ['SentimentService', '$firebaseArray'];
+homeCtrl.$inject = ['SentimentService', '$firebaseArray', '$firebaseAuth'];
 
-function homeCtrl(SentimentService, $firebaseArray) {
+function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
     var vm = this;
     vm.test = "test";
     vm.postComment = function() {
@@ -15,9 +15,10 @@ function homeCtrl(SentimentService, $firebaseArray) {
         //Get sentiment data then post to Firebase
         SentimentService.post(params).then(function(data) {
             var sentiment = data.data;
+            console.log(message);
             var message = {
                 sentiment: sentiment.results,
-                name: vm.username,
+                name: vm.user,
                 text: vm.comment
             };
             console.log(message);
@@ -25,7 +26,7 @@ function homeCtrl(SentimentService, $firebaseArray) {
                 //TODO Handle finished message
                 console.log('Message added successfully');
                 vm.comment = '';
-                
+
 
 
 
@@ -33,9 +34,27 @@ function homeCtrl(SentimentService, $firebaseArray) {
 
         })
     }
+
+    vm.loginFacebook = function() {
+        var auth = $firebaseAuth(vm.ref);
+        auth.$authWithOAuthPopup("facebook").then(function(authData) {
+            vm.user = authData.facebook.cachedUserProfile.first_name;
+        }).catch(function(error) {
+            console.log("Authentication failed:", error);
+        });
+    }
+
+    vm.logout = function() {
+        vm.ref.unauth();
+    }
+
     vm.init = function() {
-        var ref = new Firebase('https://htn-chat.firebaseio.com/');
-        vm.messages = $firebaseArray(ref.limitToLast(25));
+        
+        vm.ref = new Firebase('https://htn-chat.firebaseio.com/');
+
+        vm.ref.onAuth(vm.checkAuthenticatedUser);
+
+        vm.messages = $firebaseArray(vm.ref.limitToLast(25));
         if (navigator.geolocation) {
             var timeoutVal = 10 * 1000 * 1000;
             navigator.geolocation.getCurrentPosition(
@@ -48,16 +67,24 @@ function homeCtrl(SentimentService, $firebaseArray) {
             );
         } else {
             alert("Geolocation is not supported by this browser");
-        }   
-        vm.messages.$loaded().then(function(isLoaded){
+        }
+        vm.messages.$loaded().then(function(isLoaded) {
             console.log("loaded")
             var messageList = $('#example-messages')[0];
-            messageList.scrollTop = messageList.scrollHeight;    
-        }).catch(function (err){
+            messageList.scrollTop = messageList.scrollHeight;
+        }).catch(function(err) {
             console.log("Error", err);
         })
-        
+
     }
+    vm.checkAuthenticatedUser = function(authData){
+    if (authData){
+        vm.isLoggedIn = true;
+    } else {
+        vm.isLoggedIn = false;
+        vm.user = null;
+    }
+}
 
     /**
      * Calculates Sentiment Value and divides them into classes
@@ -82,6 +109,8 @@ function homeCtrl(SentimentService, $firebaseArray) {
     }
 
 }
+
+
 
 function setSentimentValue(value) {
 

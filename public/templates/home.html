@@ -8,34 +8,7 @@
   <div id="vertical-sentiment-bar" class="col-xs-1 pull-left"></div>
   
   <div class="col-xs-11 col-sm-3 pull-right">
-<!--     <div class="comment-area">
-      <div class="comment">
-        <span class="label label-success">Shub Sengupta</span>
-        This is a good comment! This is a good comment! This is a good comment! This is a good comment! This is a good comment! This is a good comment! 
-      </div>
-       <div class="comment">
-        <span class="label label-danger">Shub Sengupta</span>
-        This is a bad comment!
-      </div>
-      <div class="comment">
-        <span class="label label-warning">Shub Sengupta</span>
-        This is an okay comment! This is an okay comment! This is an okay comment!
-      </div>
-      <div class="comment">
-        <span class="label label-default">Shub Sengupta</span>
-        This is a netural comment!
-      </div>
-     
-    </div> -->
-
     <div class="example-chat l-demo-container">
-      <header>Chat</header>
-
-      <div class='example-chat-toolbar'>
-        <label for="nameInput">Username:</label>
-        <input ng-model='home.username' type='text' id='nameInput' placeholder='enter a username...'>
-      </div>
-
       <ul id='example-messages' class="comment-area">
 
         <li ng-repeat="message in home.messages" class='comment' anchor-bottom>
@@ -57,7 +30,10 @@
       </form>
     </div>
   </div>
-  <!-- Post Comment Template-->
+  <div class="col-xs-12">
+    <button ng-show='!home.isLoggedIn' ng-click='home.loginFacebook()'>Login with Facebook</button>
+    <button ng-show='home.isLoggedIn' ng-click="home.logout()">Logout</button>
+  </div>
   
 
 </div>
