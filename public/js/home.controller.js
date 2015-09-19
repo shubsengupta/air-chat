@@ -25,6 +25,10 @@ function homeCtrl(SentimentService, $firebaseArray) {
                 //TODO Handle finished message
                 console.log('Message added successfully');
                 vm.comment = '';
+                
+
+
+
             });
 
         })
@@ -44,7 +48,15 @@ function homeCtrl(SentimentService, $firebaseArray) {
             );
         } else {
             alert("Geolocation is not supported by this browser");
-        }
+        }   
+        vm.messages.$loaded().then(function(isLoaded){
+            console.log("loaded")
+            var messageList = $('#example-messages')[0];
+            messageList.scrollTop = messageList.scrollHeight;    
+        }).catch(function (err){
+            console.log("Error", err);
+        })
+        
     }
 
     /**
