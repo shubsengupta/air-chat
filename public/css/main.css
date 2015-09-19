@@ -1,3 +1,23 @@
+.navbar-header .navbar-brand {
+    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+    color: #fed136;
+}
+.navbar-header .navbar-brand {
+    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+    color: #fed136;
+}
+
+
+#form1 {
+    display: inline-flex;
+    height: 100%;
+    
+}
+
+#createLink {
+    margin: auto 5px;
+}
+
 #video_status {
     background-color:#222222;
     padding-bottom: 0;
