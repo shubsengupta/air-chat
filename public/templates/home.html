@@ -1,3 +1,7 @@
 <div>
-	{{home.test}}
+	<button ng-click="home.postComment()" class='btn btn-default'>Input</button>
+	<input type='text' ng-model='home.comment'></input>
+	<p>{{home.comment}}</p>
+	<p>{{home.postSentiment}}
+
 </div>
