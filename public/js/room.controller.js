@@ -2,7 +2,7 @@ angular
     .module('app')
     .controller('roomCtrl', roomCtrl);
 
-homeCtrl.$inject = ['SentimentService', '$firebaseArray', '$firebaseAuth', 'roomId'];
+roomCtrl.$inject = ['SentimentService', '$firebaseArray', '$firebaseAuth', 'roomId'];
 
 function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId) {
     var vm = this;
@@ -23,11 +23,7 @@ function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId) {
             console.log(message);
             vm.messages.$add(message).then(function(ref) {
                 //TODO Handle finished message
-                console.log('Message added successfully');
                 vm.comment = '';
-
-
-
 
             });
 

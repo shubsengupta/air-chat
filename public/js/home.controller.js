@@ -6,7 +6,6 @@ homeCtrl.$inject = ['SentimentService', '$firebaseArray', '$firebaseAuth'];
 
 function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
     var vm = this;
-    vm.test = "test";
     vm.postComment = function() {
         var params = {
             data: vm.comment
@@ -15,7 +14,6 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
         //Get sentiment data then post to Firebase
         SentimentService.post(params).then(function(data) {
             var sentiment = data.data;
-            console.log(message);
             var message = {
                 sentiment: sentiment.results,
                 name: vm.user,
@@ -26,10 +24,6 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
                 //TODO Handle finished message
                 console.log('Message added successfully');
                 vm.comment = '';
-
-
-
-
             });
 
         })
