@@ -38,8 +38,8 @@
 
       <ul id='example-messages' class="comment-area">
 
-        <li ng-repeat="message in home.messages" class='comment'>
-          <strong class='label label-default'>{{message.name}}</strong>
+        <li ng-repeat="message in home.messages" class='comment' anchor-bottom>
+          <strong class='label' ng-class='home.calculateSentimentClass(message.sentiment)'>{{message.name}}</strong>
           {{message.text}}
         </li>
       </ul>
