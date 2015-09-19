@@ -1,13 +1,14 @@
 
-  <div class="container theme-showcase" role="main">
+  <div ng-init='home.init()' class="container theme-showcase" role="main">
     
     <div class="page-header">
       <h1 class="video-title">Hack the North Closing Ceremony</h1>
     </div>
-  <div id="vertical-sentiment-bar" class="col-xs-1 col-sm-1"></div>
-  <!-- Customize embed by getting link from URL -->
+
+  <div id="vertical-sentiment-bar" class="col-xs-1 pull-left"></div>
+  
   <div class="col-xs-11 col-sm-3 pull-right">
-    <div class="comment-area">
+<!--     <div class="comment-area">
       <div class="comment">
         <span class="label label-success">Shub Sengupta</span>
         This is a good comment! This is a good comment! This is a good comment! This is a good comment! This is a good comment! This is a good comment! 
@@ -25,13 +26,31 @@
         This is a netural comment!
       </div>
      
+    </div> -->
+
+    <div class="example-chat l-demo-container">
+      <header>Firebase Chat Demo</header>
+
+      <div class='example-chat-toolbar'>
+        <label for="nameInput">Username:</label>
+        <input type='text' id='nameInput' placeholder='enter a username...'>
+      </div>
+
+      <ul id='example-messages' class="comment-area"></ul>
+
+      <footer>
+        <input type='text' id='messageInput'  placeholder='Type a message...'>
+      </footer>
     </div>
+    <p>{{home.comment}}</p>
+    <p>{{home.postSentiment}}</p>
+
   </div>
   <div class="col-xs-11 col-sm-8">
     <div class="videoWrapper hidden-xs">
       <iframe width="640" height="360" src="https://www.youtube.com/embed/kWu9rqA0SVk" frameborder="0" allowfullscreen></iframe>
     </div>
-    <div class="comment-box col-xs-11">
+    <div class="comment-box col-xs-12">
       <form ng-submit="home.postComment()">
         <textarea placeholder="Comment here..." ng-model='home.comment'></textarea>
         <input id="submit-btn" type="submit" class="btn btn-default pull-right" value="Submit Comment"></input>
@@ -40,6 +59,5 @@
   </div>
   <!-- Post Comment Template-->
   
-	<p>{{home.comment}}</p>
-	<p>{{home.postSentiment}}</p>
+
 </div>
