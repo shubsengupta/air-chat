@@ -4,4 +4,5 @@ angular
 
 function LandingCtrl(){
 	var vm = this;
+    vm.introduction = "Nanananan";
 }

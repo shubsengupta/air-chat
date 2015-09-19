@@ -1,12 +1,34 @@
+  <div ng-init='home.init()' class="container theme-showcase" role="main" style="padding-left:0; padding-right:0; ">
+    <div id="video_status"  class="page-header">
+        
+         
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" ui-sref="landing">Live Chat</a>
+            </div>
 
-  <div ng-init='home.init()' class="container theme-showcase" role="main">
-    
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#services">Services</a>
+                    </li>
+                    <li>
+                        <a ui-sref="landing" class="page-scroll" href="#portfolio">Live Chats</a>
+                    </li>
+                    </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
     <div class="page-header">
       <h1 class="video-title">Hack the North Closing Ceremony</h1>
     </div>
-
   <div id="vertical-sentiment-bar" class="col-xs-1 pull-left"></div>
-  
+
   <div class="col-xs-11 col-sm-3 pull-right">
     <div class="example-chat l-demo-container">
       <ul id='example-messages' class="comment-area">
@@ -26,14 +48,12 @@
     <div class="col-xs-12 no-padding">
       <form ng-submit="home.postComment()">
         <input placeholder="Comment here..." ng-model='home.comment' class="comment-box"></input>
-        <input id="submit-btn" type="submit" class="btn btn-default pull-right" value="Submit Comment"></input>
+        <input ng-show='home.isLoggedIn' id="submit-btn" type="submit" class="btn btn-default pull-right" value="Submit Comment"></input>
+        <button class="btn btn-danger pull-left" ng-show='!home.isLoggedIn' ng-click='home.loginFacebook()'><i class="fa fa-google"></i> Login with Google to Comment</button>
+        <button class="btn btn-danger pull-left" ng-show='home.isLoggedIn' ng-click="home.logout()"><i class="fa fa-key"></i>
+ Logout</button>
+
       </form>
     </div>
   </div>
-  <div class="col-xs-12">
-    <button ng-show='!home.isLoggedIn' ng-click='home.loginFacebook()'>Login with Facebook</button>
-    <button ng-show='home.isLoggedIn' ng-click="home.logout()">Logout</button>
-  </div>
-  
-
 </div>

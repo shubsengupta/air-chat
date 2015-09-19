@@ -1,5 +1,38 @@
+#video_status {
+    background-color:#222222;
+    padding-bottom: 0;
+}
+
+#bs-example-navbar-collapse-1 a{
+    color: #FFFFFF;
+}
+#bs-example-navbar-collapse-1 a:hover{
+    color: #FED136;
+    background-color: rgba(255,255,255,0.05);
+}
+.navbar {
+    background-color: #222222;
+    border-color: transparent;
+}
+.jumbotron p{
+    font-size-adjust: auto;
+    align-content: center;
+    margin-top: 10px;
+    
+}
+
+#landing_jumbo{
+   background-image: url(../image/live_video.jpg);
+}
+
+.jumbotron  {
+    height: 900px;
+    font-family: sans-serif;
+    overflow: hidden;
+    font: center;
+}
+
 body {
-    padding-top: 70px;
     padding-bottom: 30px;
 }
 
@@ -32,7 +65,7 @@ li.comment strong.label {
     resize: vertical;
     height: 60px;
     border: 1px solid #ccc;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
 .comment-area {
@@ -60,10 +93,6 @@ li.comment strong.label {
 
 .user-name {
     font-weight: 700;
-}
-
-#submit-btn {
-    margin-top: 10px;
 }
 
 #vertical-sentiment-bar {

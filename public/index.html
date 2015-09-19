@@ -19,35 +19,39 @@
 		<script src="./js/anchorBottom.directive.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="./bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="./css/main.css">
-		<!--- Meta Tags -->
-		<meta name="viewport" content="width=device-width">
+                <script src="js/cbpAnimatedHeader.js"></script>
+        
+        <script src="js/classie.js"></script>
 
+        <script src="js/agency.js"></script>
+       
+    
+         <!-- Custom CSS -->
+    <link href="css/agency.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  
 	</head>
 	<body>
-		<div ng-app="app">
-			 
-			 <!-- Fixed, fairly useless navbar -->
-		    <nav class="navbar navbar-inverse navbar-fixed-top">
-		      <div class="container">
-		        <div class="navbar-header">
-		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-		            <span class="sr-only">Toggle navigation</span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		          </button>
-		          <a class="navbar-brand" ui-sref="home">Brand</a>
-		        </div>
-		        <div id="navbar" class="navbar-collapse collapse">
-		          <ul class="nav navbar-nav pull-right">
-		            <li><a>40,218 watching</a></li>
-		          </ul>
-		        </div><!--/.nav-collapse -->
-		      </div>
-		    </nav>
-
+		<div ng-app="app" id="page-top" class="index">
 			<div ui-view></div>
 		</div>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
 	</body>
 </html>
