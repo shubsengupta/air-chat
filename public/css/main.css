@@ -114,3 +114,19 @@ ul#example-messages {
 .no-padding {
 	padding: 0;
 }
+
+#sentiment-container{
+    width: 100%;
+    height: 20px;
+    display: inline-flex;
+    background:#000000;
+}
+
+.sentiment-block{
+    flex-grow:4;
+    background: #00ff00;
+}
+.sentiment-block:hover{
+    cursor:pointer;
+    opacity:0.5;
+}
