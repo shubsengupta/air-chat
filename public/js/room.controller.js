@@ -95,3 +95,34 @@ function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId) {
     }
 
 }
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+var apiReady = false;
+function onYouTubeIframeAPIReady() {
+    apiReady = true;
+}
+
+function setYTStream(id) {
+    if (apiReady) {
+        player = new YT.Player('player', {
+            height: '360',
+            width: '640',
+            videoId: id,
+            playerVars: { 'autoplay': 1 }
+        });
+    }
+}
+
+
+function getTimeElapsed() {
+    if (apiReady)
+        return player.getCurrentTime();
+}
