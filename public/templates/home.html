@@ -1,57 +1,7 @@
-
-<html lang="en">
-<head>
-      <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Live Chat Landing Page</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/agency.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-</head>
-
-
-
-<div ng-init='home.init()' class="container theme-showcase" role="main" >
-    <div id="video_status"  class="page-header">
-        
-         
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" ui-sref="landing">Live Chat</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a ui-sref="landing" class="page-scroll" href="#portfolio">Live Chats</a>
-                    </li>
-                    </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-    <div class="page-header">
-      <h1 class="video-title">Hack the North Closing Ceremony</h1>
-    </div>
+<div ng-init='home.init()' class="container theme-showcase" role="main">  
+  <div class="page-header">
+    <h1 class="video-title">Hack the North Closing Ceremony</h1>
+  </div>
   <div id="vertical-sentiment-bar" class="col-xs-1 pull-left"></div>
 
   <div class="col-xs-11 col-sm-3 pull-right">
@@ -64,11 +14,11 @@
         </li>
       </ul>
     </div>
-
   </div>
+
   <div class="col-xs-11 col-sm-8">
     <div class="videoWrapper hidden-xs">
-      <iframe width="640" height="360" src="https://www.youtube.com/embed/kWu9rqA0SVk" frameborder="0" allowfullscreen></iframe>
+      <div id="player" width="640px" height="360px"></div>
     </div>
     <div id="sentiment-container"></div>
     <div class="col-xs-12 no-padding">
@@ -76,8 +26,7 @@
         <input placeholder="Comment here..." ng-model='home.comment' class="comment-box"></input>
         <input ng-show='home.isLoggedIn' id="submit-btn" type="submit" class="btn btn-default pull-right" value="Submit Comment"></input>
         <button class="btn btn-danger pull-left" ng-show='!home.isLoggedIn' ng-click='home.loginFacebook()'><i class="fa fa-google"></i> Login with Google to Comment</button>
-        <button class="btn btn-danger pull-left" ng-show='home.isLoggedIn' ng-click="home.logout()"><i class="fa fa-key"></i>
- Logout</button>
+        <button class="btn btn-danger pull-left" ng-show='home.isLoggedIn' ng-click="home.logout()"><i class="fa fa-key"></i> Logout</button>
 
       </form>
     </div>

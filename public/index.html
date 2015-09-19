@@ -14,20 +14,38 @@
 		<!--- Controllers -->
 		<script src="./js/home.controller.js"></script>
 		<script src="./js/landing.controller.js"></script>
-		<script src="./js/room.controller.js"></script>
 		<!--- Directives -->
 		<script src="./js/anchorBottom.directive.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="./bootstrap/dist/css/bootstrap.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/main.css">
+		<!--- Meta Tags -->
+		<meta name="viewport" content="width=device-width">
 
-   
-  
 	</head>
 	<body>
-		<div ng-app="app" id="page-top" class="index">
+		<div ng-app="app">
+			<!-- Fixed, fairly useless navbar -->
+		    <nav class="navbar navbar-inverse navbar-fixed-top">
+		      <div class="container">
+		        <div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				<a class="navbar-brand page-scroll" ui-sref="landing">Live Chat</a>		        </div>
+		        <div id="navbar" class="navbar-collapse collapse">
+		          <ul class="nav navbar-nav pull-right">
+		            <li><a>40,218 watching</a></li>
+		          </ul>
+		        </div><!--/.nav-collapse -->
+		      </div>
+		    </nav>
+
 			<div ui-view></div>
 		</div>
-
 	</body>
 </html>
