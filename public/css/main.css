@@ -1,7 +1,18 @@
-.navbar {
-    background-color: #444444;
-    border-color: transparent;
+#video_status {
+    background-color:#222222;
+    padding-bottom: 0;
+}
 
+#bs-example-navbar-collapse-1 a{
+    color: #FFFFFF;
+}
+#bs-example-navbar-collapse-1 a:hover{
+    color: #FED136;
+    background-color: rgba(255,255,255,0.05);
+}
+.navbar {
+    background-color: #222222;
+    border-color: transparent;
 }
 .jumbotron p{
     font-size-adjust: auto;
