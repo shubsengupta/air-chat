@@ -1,3 +1,4 @@
+
   <div class="container theme-showcase" role="main">
     
     <div class="page-header">
@@ -35,3 +36,13 @@
       <button type="button" class="btn btn-default pull-right">Submit Comment</button>
     </div>
   </div>
+  <!-- Post Comment Template-->
+  <div>
+  	<form ng-submit="home.postComment()">
+	<input type='button' value='Input'  class='btn btn-default'></input>
+	<input type='text' ng-model='home.comment'></input>
+	</form>
+	<p>{{home.comment}}</p>
+	<p>{{home.postSentiment}}
+
+</div>
