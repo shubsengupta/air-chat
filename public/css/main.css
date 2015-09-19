@@ -7,6 +7,18 @@ body {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	line-height: 42px;
+}
+
+.comment {
+	margin-bottom: 5px;
+    color: #333;
+    padding: 10px 10px 13px 10px;
+    border-radius: 2px;
+}
+
+.comment:hover {
+	background-color: rgba(200,200,200,0.1);
 }
 
 .comment-box {
@@ -14,9 +26,11 @@ body {
 }
 
 .comment-box textarea {
-	width: 100%;
-	resize: vertical;
-	height: 60px;
+    width: 100%;
+    resize: vertical;
+    height: 60px;
+    border: 1px solid #ccc;
+    padding: 5px 7px;
 }
 
 .videoWrapper {
@@ -39,4 +53,8 @@ body {
 
 .user-name {
 	font-weight: 700;
+}
+
+.comment-box button {
+	margin-top: 10px;
 }
