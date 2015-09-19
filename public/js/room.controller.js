@@ -44,9 +44,9 @@ function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId) {
     vm.init = function() {
         
         //Getting video
-        vm.video = new Firebase('https://htn-chat.firebaseio.com/room/' + roomId + '/video/');
+        vm.video = new Firebase('https://htn-chat.firebaseio.com/room/' + roomId + '/title');
         vm.video.once("value", function(data){
-            console.log(data);
+            vm.title = data.val();
         });
 
         //Connecting to Chat        
