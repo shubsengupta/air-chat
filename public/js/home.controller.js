@@ -21,7 +21,6 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
             };
             vm.messages.$add(message).then(function(ref) {
                 //TODO Handle finished message
-                console.log('Message added successfully');
                 vm.comment = '';
             });
 
@@ -42,7 +41,8 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
     }
 
     vm.init = function() {
-        
+
+
         vm.ref = new Firebase('https://htn-chat.firebaseio.com/testing');
 
         vm.ref.onAuth(vm.checkAuthenticatedUser);
@@ -68,15 +68,15 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
         }
 
         //Listens to new chat post
-        vm.ref.on("child_added", function(data){
+        vm.ref.on("child_added", function(data) {
             var message = data.val();
-            if (vm.count && vm.sentiment){
+            if (vm.count && vm.sentiment) {
                 vm.count++;
                 vm.sentiment += message.sentiment;
-                if (vm.count == 5){
+                if (vm.count == 5) {
                     var averageSentiment = vm.sentiment / 5;
                     setSentimentValue(averageSentiment);
-                    
+
                     vm.count = 0;
                     vm.sentiment = 0;
                 }
@@ -87,14 +87,14 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
         });
 
     }
-    vm.checkAuthenticatedUser = function(authData){
-    if (authData){
-        vm.isLoggedIn = true;
-    } else {
-        vm.isLoggedIn = false;
-        vm.user = null;
+    vm.checkAuthenticatedUser = function(authData) {
+        if (authData) {
+            vm.isLoggedIn = true;
+        } else {
+            vm.isLoggedIn = false;
+            vm.user = null;
+        }
     }
-}
 
     /**
      * Calculates Sentiment Value and divides them into classes
@@ -121,7 +121,7 @@ function homeCtrl(SentimentService, $firebaseArray, $firebaseAuth) {
 }
 
 //Successful Callback for Geotag
-function displayPosition(position){
+function displayPosition(position) {
     console.log(position);
 }
 //Error Callback for Geotag
@@ -173,11 +173,14 @@ function setSentimentValue(value) {
 function addBlock(startTime, duration, type) {
     var color;
     switch (type) {
-        case 1: color = '#d9534f';//red
+        case 1:
+            color = '#d9534f'; //red
             break;
-        case 2: color = '#f0ad4e';//yellow
+        case 2:
+            color = '#f0ad4e'; //yellow
             break;
-        case 3: color = '#5cb85c';//green
+        case 3:
+            color = '#5cb85c'; //green
             break;
     }
 
@@ -193,51 +196,3 @@ function addBlock(startTime, duration, type) {
 
     sentimentContainer.appendChild(block);
 }
-
-function displayLocation(latitude,longitude){
-    var request = new XMLHttpRequest();
-
-    var method = 'GET';
-    var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+latitude+','+longitude+'&sensor=true';
-    var async = true;
-
-    request.open(method, url, async);
-    request.onreadystatechange = function(){
-      if(request.readyState == 4 && request.status == 200){
-        var data = JSON.parse(request.responseText);
-        var address = data.results[0];
-        console.log(address.formatted_address);
-      }
-    };
-    request.send();
-  };
-
-  var successCallback = function(position){
-    var x = position.coords.latitude;
-    var y = position.coords.longitude;
-    displayLocation(x,y);
-  };
-
-  var errorCallback = function(error){
-    var errorMessage = 'Unknown error';
-    switch(error.code) {
-      case 1:
-        errorMessage = 'Permission denied';
-        break;
-      case 2:
-        errorMessage = 'Position unavailable';
-        break;
-      case 3:
-        errorMessage = 'Timeout';
-        break;
-    }
-    document.write(errorMessage);
-  };
-
-  var options = {
-    enableHighAccuracy: true,
-    timeout: 6000,
-    maximumAge: 0
-  };
-
-  navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);

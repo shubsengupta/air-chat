@@ -14,13 +14,11 @@ function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId) {
         //Get sentiment data then post to Firebase
         SentimentService.post(params).then(function(data) {
             var sentiment = data.data;
-            console.log(message);
             var message = {
                 sentiment: sentiment.results,
                 name: vm.user,
                 text: vm.comment
             };
-            console.log(message);
             vm.messages.$add(message).then(function(ref) {
                 //TODO Handle finished message
                 vm.comment = '';
@@ -61,6 +59,13 @@ function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId) {
         if (authData) {
             vm.user = authData.google.cachedUserProfile.given_name;
         }
+        var youtubeAPI = setInterval(function(){
+            if(apiReady){
+                setYTStream(roomId);
+            } else {
+                clearInterval(youtubeAPI);
+            }
+        },1000);
 
     }
     vm.checkAuthenticatedUser = function(authData){
@@ -95,6 +100,7 @@ function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId) {
     }
 
 }
+
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 
