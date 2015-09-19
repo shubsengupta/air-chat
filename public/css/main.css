@@ -1,6 +1,8 @@
 #video_status {
     background-color:#222222;
     padding-bottom: 0;
+    margin-left:-15 ;
+    margin-right:-15;
 }
 
 #bs-example-navbar-collapse-1 a{
