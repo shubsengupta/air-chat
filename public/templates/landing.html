@@ -1,6 +1,4 @@
-
-
-<div id="form1" class="container">
+<div id="form1">
     <div class="row">
 		<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
@@ -19,11 +17,7 @@
 			    		<div class="Buttons">
 			    	    	<label>
 			    	    		 <input type='button' class="btn btn-default" ng-click='landing.getLocation()' value='Location'></input> <br>
-                            <p></p>
 			    	    	</label>
-                            <label>
-                              
-                            </label>
 			    	    </div>
 			    		<input ng-click='landing.createLink()' class="btn btn-lg btn-success btn-block" type="button" value="Create Link!">
                     <p ng-show="landing.response">Your link is <a href="{{landing.response}}">{{landing.response}}</a></p>
