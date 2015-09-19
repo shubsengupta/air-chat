@@ -1,61 +1,6 @@
-.navbar-header .navbar-brand {
-    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-    color: #fed136;
-}
-.navbar-header .navbar-brand {
-    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-    color: #fed136;
-}
-
-
-#form1 {
-    display: inline-flex;
-    height: 100%;
-    
-}
-
-#createLink {
-    margin: auto 5px;
-}
-
-#video_status {
-    background-color:#222222;
-    padding-bottom: 0;
-    margin-left:-15 ;
-    margin-right:-15;
-}
-
-#bs-example-navbar-collapse-1 a{
-    color: #FFFFFF;
-}
-#bs-example-navbar-collapse-1 a:hover{
-    color: #FED136;
-    background-color: rgba(255,255,255,0.05);
-}
-.navbar {
-    background-color: #222222;
-    border-color: transparent;
-}
-.jumbotron p{
-    font-size-adjust: auto;
-    align-content: center;
-    margin-top: 10px;
-    
-}
-
-#landing_jumbo{
-   background-image: url(../image/live_video.jpg);
-}
-
-.jumbotron  {
-    height: 900px;
-    font-family: sans-serif;
-    overflow: hidden;
-    font: center;
-}
-
 body {
-    padding-bottom: 30px;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 .video-title {
@@ -64,7 +9,8 @@ body {
     -ms-text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
-    line-height: 42px;
+    line-height: 32px;
+    font-size: 28px;
 }
 
 .comment {
@@ -75,7 +21,7 @@ body {
 }
 
 li.comment strong.label {
-	margin-right: 6px;
+    margin-right: 6px;
 }
 
 .comment:hover {
@@ -85,13 +31,14 @@ li.comment strong.label {
 .comment-box {
     width: 100%;
     resize: vertical;
-    height: 60px;
+    height: 55px;
     border: 1px solid #ccc;
     margin: 10px 0;
+    padding-left: 10px;
 }
 
 .comment-area {
-	padding-left: 0px !important;
+    padding-left: 0px !important;
 }
 
 .videoWrapper {
@@ -119,13 +66,13 @@ li.comment strong.label {
 
 #vertical-sentiment-bar {
     display: inline-block;
-    width: 20px;
-    height: 65vh;
-    border: solid 3px #5cb85c;
-    border-radius: 10px;
+    width: 35px;
+    height: 66vh;
+    border: solid 2px #5cb85c;
+    border-radius: 5px;
     position: relative;
-	margin-right: -6px;
-	padding-top: 4px;
+    margin-right: -6px;
+    padding-top: 4px;
 }
 
 ul#example-messages {
@@ -134,7 +81,7 @@ ul#example-messages {
 }
 
 .no-padding {
-	padding: 0;
+    padding: 0;
 }
 
 #sentiment-container{
@@ -151,4 +98,13 @@ ul#example-messages {
 .sentiment-block:hover{
     cursor:pointer;
     opacity:0.5;
+}
+#form1 {
+    display: inline-flex;
+    height: 100%;
+    
+}
+
+#createLink {
+    margin: auto 5px;
 }
