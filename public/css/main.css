@@ -1,40 +1,5 @@
-#video_status {
-    background-color:#222222;
-    padding-bottom: 0;
-    margin-left:-15 ;
-    margin-right:-15;
-}
-
-#bs-example-navbar-collapse-1 a{
-    color: #FFFFFF;
-}
-#bs-example-navbar-collapse-1 a:hover{
-    color: #FED136;
-    background-color: rgba(255,255,255,0.05);
-}
-.navbar {
-    background-color: #222222;
-    border-color: transparent;
-}
-.jumbotron p{
-    font-size-adjust: auto;
-    align-content: center;
-    margin-top: 10px;
-    
-}
-
-#landing_jumbo{
-   background-image: url(../image/live_video.jpg);
-}
-
-.jumbotron  {
-    height: 900px;
-    font-family: sans-serif;
-    overflow: hidden;
-    font: center;
-}
-
 body {
+    padding-top: 70px;
     padding-bottom: 30px;
 }
 
@@ -55,7 +20,7 @@ body {
 }
 
 li.comment strong.label {
-	margin-right: 6px;
+    margin-right: 6px;
 }
 
 .comment:hover {
@@ -71,7 +36,7 @@ li.comment strong.label {
 }
 
 .comment-area {
-	padding-left: 0px !important;
+    padding-left: 0px !important;
 }
 
 .videoWrapper {
@@ -104,8 +69,8 @@ li.comment strong.label {
     border: solid 3px #5cb85c;
     border-radius: 10px;
     position: relative;
-	margin-right: -6px;
-	padding-top: 4px;
+    margin-right: -6px;
+    padding-top: 4px;
 }
 
 ul#example-messages {
@@ -114,7 +79,7 @@ ul#example-messages {
 }
 
 .no-padding {
-	padding: 0;
+    padding: 0;
 }
 
 #sentiment-container{
