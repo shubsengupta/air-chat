@@ -1,0 +1,37 @@
+<html>
+<head>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  </head>
+  <body>
+    <script>
+        function nice() {
+   var ref = new Firebase("https://fiery-torch-759.firebaseio.com");
+        ref.authWithOAuthPopup("facebook", function(error, authData) {
+  if (error) {
+    console.log("Login Failed!", error);
+  } else {
+    // the access token will allow us to make Open Graph API calls
+    console.log(authData.facebook.accessToken);
+  }
+}, {
+  scope: "email,user_likes" // the permissions requested
+});
+        }
+        myFirebaseRef.createUser({
+  email    : "bobtony@firebase.com",
+  password : "correcthorsebatterystaple"
+}, function(error, userData) {
+  if (error) {
+    console.log("Error creating user:", error);
+  } else {
+    console.log("Successfully created user account with uid:", userData.uid);
+  }
+});
+    </script>
+      <button onclick='nice()'>jajaj</button>
+  </body>
+</html>
+
+
+

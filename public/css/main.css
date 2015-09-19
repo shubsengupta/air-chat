@@ -1,5 +1,27 @@
+.navbar {
+    background-color: #444444;
+    border-color: transparent;
+
+}
+.jumbotron p{
+    font-size-adjust: auto;
+    align-content: center;
+    margin-top: 10px;
+    
+}
+
+#landing_jumbo{
+   background-image: url(../image/live_video.jpg);
+}
+
+.jumbotron  {
+    height: 900px;
+    font-family: sans-serif;
+    overflow: hidden;
+    font: center;
+}
+
 body {
-    padding-top: 70px;
     padding-bottom: 30px;
 }
 
