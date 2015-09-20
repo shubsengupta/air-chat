@@ -1,4 +1,4 @@
-<div id="form1">
+<div id="form1" ng-init='landing.init()'>
     <div class="row">
 		<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
@@ -26,4 +26,10 @@
 			    </div>
 			</div>
 		</div>
+        <div class='col-md-4 col-md-offset-4'>
+            <h1 class='text-center  '>Events near you</h1>
+            <div ng-repeat='stream in landing.localStreams'>
+                <a ui-sref="room({{landing.getId(stream)}})"><h4 class='text-center'>{{stream.title}}</h4></a>
+            </div>
+        </div>
 	</div>
