@@ -23,11 +23,12 @@
     <div class="videoWrapper hidden-xs">
         <div id="player" width="640px" height="360px"></div>
     </div>
+    <div id="sentiment-container"></div>
     <div class="col-xs-12 no-padding">
-      <form ng-submit="room.postComment()">
-        <input placeholder="Comment here..." ng-model='room.comment' class="comment-box"></input>
-        <input id="submit-btn" type="submit" class="btn btn-default pull-right" value="Submit Comment"></input>
-      </form>
+        <form ng-submit="room.postComment()">
+            <input placeholder="Comment here..." ng-model='room.comment' class="comment-box"></input>
+            <input id="submit-btn" type="submit" class="btn btn-default pull-right" value="Submit Comment"></input>
+        </form>
     </div>
   </div>
   <div class="col-xs-12">
