@@ -18,7 +18,7 @@ function LandingCtrl($firebaseObject, $http, $scope) {
             vm.room.location = vm.location;
         }
         vm.room.$save();
-        vm.response = "http://localhost:3000/#/room/" + responseLink;
+        vm.response = "http://air-chat.co/#/room/" + responseLink;
     }
 
     vm.init = function() {
