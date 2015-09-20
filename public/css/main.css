@@ -136,4 +136,8 @@ ul#example-messages {
     opacity:0.5;
 }
 
+#chat-side {
+    margin-left: -30px;
+}
+
 
