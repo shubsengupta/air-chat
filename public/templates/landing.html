@@ -1,29 +1,43 @@
-<div id="form1">
-    <div class="row">
-		<div class="col-md-4 col-md-offset-4">
-    		<div class="panel panel-default">
-			  	<div class="panel-heading">
-			    	<h3 id="createLink" class="panel-title">Chat while streaming!!</h3>
-			 	</div>
-			  	<div class="panel-body">
-			    	<form accept-charset="UTF-8" role="form">
-                    <fieldset>
-			    	  	<div class="form-group">
-			    		    <input type='text' class="form-control" ng-model='landing.link' placeholder="Enter URL Here"></input> <br>
-			    		</div>
-			    		<div class="form-group">
-			    			<input type="text" class="form-control"  ng-model='landing.event' id="inputPassword3" placeholder="Enter Title of Event"> <br>
-			    		</div>
-			    		<div class="Buttons">
-			    	    	<label>
-			    	    		 <input type='button' class="btn btn-default" ng-click='landing.getLocation()' value='Location'></input> <br>
-			    	    	</label>
-			    	    </div>
-			    		<input ng-click='landing.createLink()' class="btn btn-lg btn-success btn-block" type="button" value="Create Link!">
-                    <p ng-show="landing.response">Your link is <a href="{{landing.response}}">{{landing.response}}</a></p>
-			    	</fieldset>
-			      	</form>
-			    </div>
-			</div>
-		</div>
-	</div>
+<html style="background-colour:#bdc3c7;">
+<head>
+</head>
+
+<body id="landing_body" style="background-colour:#bdc3c7;">
+    <div id="form1">
+        <div class="row">
+            <h1 id="Main_Title">Air Chat</h1>
+            <p></p>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 id="createLink" class="panel-title">Share a link with Air Chat</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p id="bodyp">Air Chat allows you to watch an online stream with your friends or attend a chat at an event. The chat will be analyzed to mark which parts of the stream is considered to be bad by the user.</p>
+                        <form accept-charset="UTF-8" role="form">
+                        <fieldset>
+                            <div class="form-group">
+                                <input type='text' class="form-control" ng-model='landing.link' placeholder="Enter URL Here"></input> <br>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control"  ng-model='landing.event' id="inputPassword3" placeholder="Enter Title of Event"> <br>
+                            </div>
+                            <div class="Buttons">
+                                <label>
+                                     <input type='button' class="btn btn-default btn-lg" ng-click='landing.getLocation()' value='Location'></input> <br>
+                                <p></p>
+                                </label>
+                            </div>
+                        <p></p>
+                            <input ng-click='landing.createLink()' class="btn btn-lg btn-success btn-block" type="button" value="Create Link!">
+                        <p style="font-size: 20px; margin-top:10px;" ng-show="landing.response">Your link is <a href="{{landing.response}}">{{landing.response}}</a></p>
+                        </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   </body>
+
+</html>
