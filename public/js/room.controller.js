@@ -2,9 +2,9 @@ angular
     .module('app')
     .controller('roomCtrl', roomCtrl);
 
-roomCtrl.$inject = ['SentimentService', '$firebaseArray', '$firebaseAuth', 'roomId'];
+roomCtrl.$inject = ['SentimentService', '$firebaseArray', '$firebaseAuth', 'roomId', '$scope'];
 
-function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId) {
+function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId,$scope) {
     var vm = this;
     vm.postComment = function() {
         if (vm.user) {
@@ -67,10 +67,10 @@ function roomCtrl(SentimentService, $firebaseArray, $firebaseAuth, roomId) {
         //Polls until Youtube API is loaded
         var youtubeAPI = setInterval(function() {
             if (apiReady) {
+                console.log(roomId);
                 setYTStream(roomId);
-            } else {
                 clearInterval(youtubeAPI);
-            }
+            } 
         }, 1000);
 
         //Listens to new chat post
