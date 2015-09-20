@@ -160,3 +160,4 @@ function getTimeElapsed() {
     if (apiReady)
         return player.getCurrentTime();
 }
+
