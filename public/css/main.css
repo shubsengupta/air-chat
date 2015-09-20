@@ -140,4 +140,9 @@ ul#example-messages {
     margin-left: -30px;
 }
 
+.navbar-brand img {
+    width: 120px;
+    margin-top: -8px;
+}
+
 
