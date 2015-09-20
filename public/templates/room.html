@@ -23,7 +23,9 @@
     <div class="videoWrapper hidden-xs">
         <div id="player" width="640px" height="360px"></div>
     </div>
+    <div id="sentiment-container"></div>
     <div class="col-xs-12 no-padding">
+
       <form ng-submit="room.postComment()">
         <input ng-show='room.isLoggedIn' placeholder="Comment here..." ng-model='room.comment' class="comment-box"></input>
         <input ng-show='room.isLoggedIn' id="submit-btn" type="submit" class="btn btn-default pull-right hidden-xs" value="Submit Comment"></input>
